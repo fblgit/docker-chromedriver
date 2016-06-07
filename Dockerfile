@@ -56,6 +56,7 @@ RUN dpkg-divert --add --rename --divert /opt/google/chrome/google-chrome.real /o
 # Configure Supervisor 
 ADD ./etc/supervisord.conf /etc/
 ADD ./etc/supervisor /etc/supervisor
+ADD extra.sh /scripts/
 
 # Default configuration
 ENV DISPLAY :20.0
