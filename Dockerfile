@@ -22,8 +22,10 @@ RUN apt-get -yqq update && \
     apt-get -yqq install curl unzip && \
     apt-get -yqq install xvfb tinywm && \
     apt-get -yqq install fonts-ipafont-gothic xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic && \
-    apt-get -yqq install python && \
+    apt-get -yqq install python-pip && \
     rm -rf /var/lib/apt/lists/*
+
+RUN pip -q install selenium
 
 # Install Supervisor
 RUN curl -sS -o - https://bootstrap.pypa.io/ez_setup.py | python && \
@@ -57,7 +59,7 @@ ADD ./etc/supervisor /etc/supervisor
 
 # Default configuration
 ENV DISPLAY :20.0
-ENV SCREEN_GEOMETRY "1440x900x24"
+ENV SCREEN_GEOMETRY "800x600x24"
 ENV CHROMEDRIVER_PORT 4444
 ENV CHROMEDRIVER_WHITELISTED_IPS "127.0.0.1"
 
