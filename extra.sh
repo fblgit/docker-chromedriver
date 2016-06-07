@@ -1,6 +1,6 @@
 #!/bin/bash
 if [ -f /selenium/extra.sh ]; then
-  /selenium/extra.#!/bin/sh
+  /selenium/extra.sh
 else
   tail -f /var/log/supervisor/*.log
 fi
