@@ -1,5 +1,5 @@
 #!/bin/bash
-if [ -f /selenium/extra.sh ];
+if [ -f /selenium/extra.sh ]; then
   /selenium/extra.#!/bin/sh
 else
   tail -f /var/log/supervisor/*.log
