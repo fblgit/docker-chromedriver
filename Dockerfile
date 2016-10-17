@@ -22,7 +22,7 @@ RUN apt-get -yqq update && \
     apt-get -yqq install curl unzip && \
     apt-get -yqq install xvfb tinywm && \
     apt-get -yqq install fonts-ipafont-gothic xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic && \
-    apt-get -yqq install python-pip && \
+    apt-get -yqq install python-pip python-beautifulsoup && \
     rm -rf /var/lib/apt/lists/*
 
 RUN pip -q install selenium
@@ -38,7 +38,7 @@ RUN CHROMEDRIVER_VERSION=`curl -sS chromedriver.storage.googleapis.com/LATEST_RE
     unzip -qq /tmp/chromedriver_linux64.zip -d /opt/chromedriver-$CHROMEDRIVER_VERSION && \
     rm /tmp/chromedriver_linux64.zip && \
     chmod +x /opt/chromedriver-$CHROMEDRIVER_VERSION/chromedriver && \
-    ln -fs /opt/chromedriver-$CHROMEDRIVER_VERSION/chromedriver /usr/local/bin/chromedriver    
+    ln -fs /opt/chromedriver-$CHROMEDRIVER_VERSION/chromedriver /usr/local/bin/chromedriver
 
 # Install Google Chrome
 RUN curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
@@ -53,7 +53,7 @@ RUN dpkg-divert --add --rename --divert /opt/google/chrome/google-chrome.real /o
     echo "#!/bin/bash\nexec /opt/google/chrome/google-chrome.real --disable-setuid-sandbox \"\$@\"" > /opt/google/chrome/google-chrome && \
     chmod 755 /opt/google/chrome/google-chrome
 
-# Configure Supervisor 
+# Configure Supervisor
 ADD ./etc/supervisord.conf /etc/
 ADD ./etc/supervisor /etc/supervisor
 ADD extra.sh /scripts/
