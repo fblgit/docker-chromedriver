@@ -22,7 +22,7 @@ RUN apt-get -yqq update && \
     apt-get -yqq install curl unzip && \
     apt-get -yqq install xvfb tinywm && \
     apt-get -yqq install fonts-ipafont-gothic xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic && \
-    apt-get -yqq install python-pip python-beautifulsoup && \
+    apt-get -yqq install python-pip python-beautifulsoup fonts-wqy-zenhei xfonts-wqy ttf-wqy-zenhei && \
     rm -rf /var/lib/apt/lists/*
 
 RUN pip -q install selenium
